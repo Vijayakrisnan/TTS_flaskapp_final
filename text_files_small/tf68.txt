@@ -1,0 +1,1 @@
+ and then try to output the position of, say, other cars so that your self-driving car can safely drive around the other cars.

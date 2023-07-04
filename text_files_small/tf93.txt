@@ -1,0 +1,1 @@
+So supervised learning algorithms learn to predict input, output or X to Y mapping. And in the last video you saw that regression algorithms, which is a type of supervised learning algorithm

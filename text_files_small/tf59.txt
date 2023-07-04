@@ -1,0 +1,1 @@
+Let's look at some examples. If the input x is an email and the output y is this email, spam or not spam, this gives you your spam filter.

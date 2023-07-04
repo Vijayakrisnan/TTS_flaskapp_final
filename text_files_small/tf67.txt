@@ -1,0 +1,1 @@
+ Or if you want to build a self-driving car, the learning algorithm would take as input an image and some information from other sensors such as a radar or other things

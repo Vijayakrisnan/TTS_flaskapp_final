@@ -1,0 +1,1 @@
+Let's take a look at what that means. Supervised machine learning or more commonly, supervised learning, refers to algorithms that learn x to y or input to output mappings.

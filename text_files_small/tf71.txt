@@ -1,0 +1,1 @@
+ and have the learning algorithm output whether or not there is a scratch, dent, or other defect in the product.

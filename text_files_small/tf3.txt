@@ -1,0 +1,1 @@
+Beyond learning the algorithms though, in this class, you'll also learn all the important practical tips and tricks for making them perform well. You get to implement them and see how they work for yourself.

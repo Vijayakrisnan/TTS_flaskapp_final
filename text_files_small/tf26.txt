@@ -1,0 +1,1 @@
+ Here's a definition of what is machine learning that is attributed to Arthur Samuel. She defined machine learning as the field of study that gives computers the ability to learn without being explicitly programmed.

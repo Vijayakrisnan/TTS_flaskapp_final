@@ -1,0 +1,1 @@
+You'll learn about the most important machine learning algorithms, some of which are exactly what's being used in large AI or large tech companies today and you get a sense of what is the state of the art in AI.

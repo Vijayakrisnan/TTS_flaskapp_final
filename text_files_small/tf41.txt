@@ -1,0 +1,1 @@
+By far, the most used types of learning algorithms today are supervised learning, unsupervised learning, and recommender systems.

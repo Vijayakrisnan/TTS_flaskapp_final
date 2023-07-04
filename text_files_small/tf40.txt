@@ -1,0 +1,1 @@
+the first and second courses will focus on supervised learning, and the third will focus on unsupervised learning, recommender systems, and reinforcement learning.

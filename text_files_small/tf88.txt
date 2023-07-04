@@ -1,0 +1,1 @@
+That's why this is supervised learning. To define a little bit more terminology, this housing price prediction is the particular type of supervised learning called regression.

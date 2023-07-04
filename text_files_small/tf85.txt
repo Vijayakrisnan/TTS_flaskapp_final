@@ -1,0 +1,1 @@
+choose the most appropriate line or curve or other thing to fit to this data. What you've seen in this slide is an example of supervised learning.

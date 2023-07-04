@@ -1,0 +1,1 @@
+without the output label and gives a reasonably accurate prediction or guess of the output.

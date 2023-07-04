@@ -1,0 +1,1 @@
+This is called visual inspection and it's helping manufacturers reduce or prevent defects in their products. In all of these applications, you will first train your model with examples of inputs x and the right answers, that is the labels y.

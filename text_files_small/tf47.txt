@@ -1,0 +1,1 @@
+ I regularly visit with friends and teams in some of the top tech companies, and even today I see experienced machine learning teams apply machine learning algorithms to some problems, and sometimes they've been going at it for six months without much success.

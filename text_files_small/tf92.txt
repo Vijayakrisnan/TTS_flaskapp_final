@@ -1,0 +1,1 @@
+You saw in this video an example of regression where the task is to predict number. But there's also a second major type of supervised learning problem called classification. Let's take a look at what that means in the next video.

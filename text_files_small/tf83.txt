@@ -1,0 +1,1 @@
+One of the things you see later in this class is how you can decide whether to fit a straight line, a curve, or another function that is even more complex to the data.

@@ -1,0 +1,1 @@
+Arthur Samuel's definition was a rather informal one but in the next two videos, we'll dive deeper together into what are the major types of machine learning algorithms?

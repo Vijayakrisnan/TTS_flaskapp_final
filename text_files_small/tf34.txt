@@ -1,0 +1,1 @@
+In general, the more opportunities you give a learning algorithm to learn, the better it will perform. If you didn't select the correct answer the first time, that's totally okay too.

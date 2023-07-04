@@ -1,0 +1,1 @@
+learns to predict numbers out of infinitely many possible numbers. There's a second major type of supervised learning algorithm called a classification algorithm. Let's take a look at what this means.

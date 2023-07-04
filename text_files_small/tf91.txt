@@ -1,0 +1,1 @@
+That's supervised learning, learning input, output, or x to y mappings.

@@ -1,0 +1,1 @@
+ You can have a learning algorithm takes as input a picture of a manufactured product, say a cell phone that just rolled off the production line

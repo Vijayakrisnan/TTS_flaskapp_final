@@ -1,0 +1,1 @@
+We wanted to build intelligent machines. It turns out that there are a few basic things that we could program a machine to do, such as how to find the shortest path from a to b, like in your GPS. 

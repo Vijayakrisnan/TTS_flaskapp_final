@@ -1,0 +1,1 @@
+In this course, you learn about many different learning algorithms. The two main types of machine learning are supervised learning and unsupervised learning. 

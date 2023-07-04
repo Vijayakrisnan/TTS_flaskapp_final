@@ -1,0 +1,1 @@
+ We'll define what these terms mean more in the next couple of videos. Of these two, supervised learning is the type of machine learning that is used most in many real-world applications.

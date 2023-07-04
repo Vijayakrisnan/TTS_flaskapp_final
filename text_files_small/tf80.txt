@@ -1,0 +1,1 @@
+But fitting a straight line isn't the only learning algorithm you can use. There are others that could work better for this application.

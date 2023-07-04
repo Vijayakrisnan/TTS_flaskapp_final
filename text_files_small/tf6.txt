@@ -1,0 +1,1 @@
+But for the most part, we just did not know how to write an explicit program to do many of the more interesting things, such as perform web search, recognize human speech, diagnose diseases from X-rays or build a self-driving car.

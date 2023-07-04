@@ -1,0 +1,1 @@
+After the model has learned from these input, output, or x and y pairs, they can then take a brand new input x, something it has never seen before,

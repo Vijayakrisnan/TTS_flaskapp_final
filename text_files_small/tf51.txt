@@ -1,0 +1,1 @@
+ In this class, you gain a sense of how the most skilled machine learning engineers build systems. I hope you finish this class as one of those very rare people in today's world that know how to design and build serious machine learning systems.

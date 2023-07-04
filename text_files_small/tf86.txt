@@ -1,0 +1,1 @@
+ Because we gave the algorithm a dataset in which the so-called right answer, that is the label or the correct price y is given for every house on the plot.

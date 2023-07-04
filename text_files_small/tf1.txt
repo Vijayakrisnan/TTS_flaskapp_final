@@ -1,0 +1,1 @@
+In this class, you'll learn about the state of the art and also practice implementing machine learning algorithms yourself.

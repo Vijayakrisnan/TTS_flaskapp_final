@@ -1,0 +1,1 @@
+and is by seeing correct pairs of input x and desired output label y that the learning algorithm eventually learns to take just the input alone

@@ -1,0 +1,1 @@
+The task of the learning algorithm is to produce more of these right answers, specifically predicting what is the likely price for other houses like your friend's house.

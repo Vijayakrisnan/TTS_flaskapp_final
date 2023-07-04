@@ -1,0 +1,1 @@
+Or if the input is an audio clip and the algorithm's job is output the text transcript, then this is speech recognition.

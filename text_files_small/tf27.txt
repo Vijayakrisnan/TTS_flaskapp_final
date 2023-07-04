@@ -1,0 +1,1 @@
+ Samuel's claim to fame was that back in the 1950s, he wrote a checkers playing program. The amazing thing about this program was that Arthur Samuel himself wasn't a very good checkers player.

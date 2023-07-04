@@ -1,0 +1,1 @@
+And these tumors are labeled as either benign, which I will designate in this example with a 0 

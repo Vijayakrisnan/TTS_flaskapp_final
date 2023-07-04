@@ -1,0 +1,1 @@
+That's machine learning. In the next video, let's look more deeply at what is supervised learning and also what is unsupervised learning.

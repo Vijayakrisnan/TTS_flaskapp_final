@@ -1,0 +1,1 @@
+By regression, I mean we're trying to predict a number from infinitely many possible numbers such as the house prices in our example,
