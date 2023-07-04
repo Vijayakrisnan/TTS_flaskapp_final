@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Text to Speech</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        form {
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #555;
+        }
+
+        select,
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        audio {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 10px;
+        }
+
+        .radio-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-label {
+            margin-left: 10px;
+        }
+
+        #status {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        canvas {
+            width: 100%;
+            height: 200px;
+            background-color: #f0f0f0;
+        }
+
+        .recording-button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .start-recording {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .stop-recording {
+            background-color: #FF4136;
+            color: #fff;
+        }
+
+        .recordings-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .recordings-list li {
+            margin-bottom: 10px;
+        }
+
+        .recordings-list li a {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .recordings-list li a:hover {
+            background-color: #ddd;
+        }
+
+
+        #convertButton {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        #convertButton:hover {
+            background-color: #45a049;
+        }
+
+        #convertButton:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #audioOutput {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Text to Speech Conversion</h1>
+
+        {% for audio in audio_files[:4] %}
+        <div class="radio-wrapper">
+            <input type="radio" id="{{ audio }}" name="audio" value="{{ audio }}" {% if audio==selected_audio
+                %}checked{% endif %}>
+            <label class="radio-label" for="{{ audio }}">
+                <audio controls>
+                    <source src="{{ url_for('static', filename='audio_files_small/' + audio) }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </label>
+        </div>
+        {% endfor %}
+
+        <h2>Record Audio</h2>
+        <div>
+            <button id="recordButton" class="recording-button start-recording" onclick="toggleRecording(this);">
+                Start Recording
+            </button>
+        </div>
+        <h2>Recordings</h2>
+        <ul id="recordingsList" class="recordings-list"></ul>
+
+        <button id="convertButton" onclick="convertToSpeech();" {% if not selected_audio %}disabled{% endif %}>
+            Convert Text to Speech
+        </button>
+
+        <hr>
+        <h2>Text:</h2>
+        <p id="text">{{ text }}</p>
+
+        <h2>Audio Output:</h2>
+        <div id="audioOutput"></div>
+
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+        <!-- Existing code for Recorder.js and JavaScript logic -->
+
+        <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/recorderjs/dist/recorder.js"></script>
+
+        <script>
+            // JavaScript code
+
+            // JavaScript code
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var convertButton = document.getElementById('convertButton');
+                var audioRadios = document.querySelectorAll('input[type="radio"][name="audio"]');
+                var audioOutputContainer = document.getElementById('audioOutput');
+
+                // Add event listener to radio buttons
+                audioRadios.forEach(function (radio) {
+                    radio.addEventListener('change', function () {
+                        // Enable convertButton if any radio button is selected
+                        convertButton.disabled = !isAnyRadioSelected();
+                    });
+                });
+
+                // Function to check if any radio button is selected
+                function isAnyRadioSelected() {
+                    for (var i = 0; i < audioRadios.length; i++) {
+                        if (audioRadios[i].checked) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+
+                convertButton.addEventListener('click', function () {
+                    // Get the selected audio filename
+                    var selectedAudio = document.querySelector('input[type="radio"][name="audio"]:checked').value;
+
+                    // Make AJAX request to convert and display the text and audio
+                    convertToSpeech(selectedAudio);
+                });
+
+                function convertToSpeech(filename) {
+                    // Remove the previous audio output
+                    var audioOutputContainer = document.getElementById('audioOutput');
+                    audioOutputContainer.innerHTML = '';
+
+                    // Make an AJAX request to the Flask endpoint
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', '/convert/' + filename, true);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            // On success, parse the JSON response
+                            var response = JSON.parse(xhr.responseText);
+
+                            // Update the text output element
+                            var textElement = document.getElementById('text');
+                            textElement.textContent = response.text;
+                            textElement.style.display = 'block';
+
+                            // Create and append the audio element
+                            var audioElement = document.createElement('audio');
+                            audioElement.src = response.output_file;
+                            audioElement.controls = true;
+                            audioOutputContainer.appendChild(audioElement);
+                        }
+                    };
+                    xhr.send();
+                }
+            });
+
+            var recording = false;
+            var recorder;
+            var recordingsList = document.getElementById('recordingsList');
+
+            function toggleRecording(button) {
+                if (recording) {
+                    // Stop recording
+                    recorder.stop();
+                    recorder.exportWAV(function (blob) {
+                        addRecording(blob);
+                    });
+                    button.textContent = 'Start Recording';
+                    button.classList.remove('stop-recording');
+                    button.classList.add('start-recording');
+                    recording = false;
+                } else {
+                    // Start recording
+                    button.textContent = 'Stop Recording';
+                    button.classList.remove('start-recording');
+                    button.classList.add('stop-recording');
+                    recording = true;
+                    startRecording();
+                }
+            }
+
+            function startRecording() {
+                navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+                    var audioContext = new AudioContext();
+                    var input = audioContext.createMediaStreamSource(stream);
+                    recorder = new Recorder(input, { numChannels: 1 });
+                    recorder.record();
+                }).catch(function (err) {
+                    console.error('Error starting recording: ' + err);
+                });
+            }
+
+            function addRecording(blob) {
+                var url = URL.createObjectURL(blob);
+                var li = document.createElement('li');
+                var audio = document.createElement('audio');
+                var deleteButton = document.createElement('button');
+
+                audio.controls = true;
+                audio.src = url;
+
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = 'delete-button';
+                deleteButton.addEventListener('click', function () {
+                    li.parentNode.removeChild(li);
+                });
+
+                li.appendChild(audio);
+                li.appendChild(deleteButton);
+                recordingsList.appendChild(li);
+
+                // Enable convertButton when a recording is added
+                document.getElementById('convertButton').disabled = false;
+            }
+        </script>
+    </div>
+</body>
+
+</html>
